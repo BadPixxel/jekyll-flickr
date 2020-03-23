@@ -1,3 +1,3 @@
 module Jekyll
-	FLICKR_VERSION = '1.0.0'
+	FLICKR_VERSION = '0.0.1'
 end

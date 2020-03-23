@@ -12,6 +12,13 @@
 require 'flickraw'
 require 'shellwords'
 
+require_relative "badpixxel-jekyll-flickr/config"
+require_relative "badpixxel-jekyll-flickr/loader"
+require_relative "badpixxel-jekyll-flickr/filters"
+require_relative "badpixxel-jekyll-flickr/photo"
+require_relative "badpixxel-jekyll-flickr/photoset"
+require_relative "badpixxel-jekyll-flickr/version"
+
 module Jekyll
     
 # Setup Flickr Plugin
