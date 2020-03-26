@@ -15,7 +15,7 @@ require 'flickraw'
 module Jekyll
 
 class Photoset
-    attr_accessor :id, :title, :description, :date_update, :date_update_str, :slug, :cache_dir, :cache_file, :photos, :photos_from_cache, :photos_from_flickr
+    attr_accessor :id, :title, :description, :primary, :date_update, :date_update_str, :slug, :cache_dir, :cache_file, :photos, :photos_from_cache, :photos_from_flickr
     
     def initialize(site, photoset)
         self.photos = Array.new
@@ -34,6 +34,7 @@ class Photoset
         self.id = flickr_photoset.id
         self.title = flickr_photoset.title
         self.description = flickr_photoset.description
+        self.primary = flickr_photoset.primary
         self.date_update = flickr_photoset.date_update
         self.date_update_str = DateTime.strptime(flickr_photoset.date_update, '%s').to_s
         self.slug = self.title.downcase.gsub(/ /, '-').gsub(/[^a-z\-]/, '')
@@ -84,6 +85,7 @@ class Photoset
         self.id = cached['id']
         self.title = cached['title']
         self.description = cached['description']
+        self.primary = cached['primary']
         self.date_update = cached['date_update']
         self.date_update_str = cached['date_update_str']
         self.slug = cached['slug']
@@ -102,6 +104,7 @@ class Photoset
         cached['id'] = self.id
         cached['title'] = self.title
         cached['description'] = self.description
+        cached['primary'] = self.primary
         cached['date_update'] = self.date_update
         cached['date_update_str'] = self.date_update_str
         cached['slug'] = self.slug
@@ -110,7 +113,19 @@ class Photoset
         
         File.open(self.cache_file, 'w') {|f| f.print(YAML::dump(cached))}
     end
-
+    
+    # Convert PhotoSet to liquid Format
+    def to_liquid
+        return [
+            'id' => self.id,
+            'title' => self.title,
+            'description' => self.description,
+            'primary' => self.primary,
+            'slug' => self.slug,
+            'date_update' =>  self.date_update,
+        ]
+    end  
+    
     # Get List of Most used tags    
     def get_top_tags(count)
         # Build List of tags [ "tag" => count ]
@@ -172,6 +187,27 @@ class Photoset
         end
 
         return collection
+    end 
+    
+    # Get Photoset Primary Photo   
+    def get_primary_photo()
+        photo = self.get_photo(self.primary)
+        if photo
+            return photo
+        end
+
+        return self.photos.first()
+    end
+    
+    # Get Photoset Photo   
+    def get_photo(photo_id)
+        self.photos.each do |photo|
+            if photo.id == photo_id
+                return photo
+            end
+        end
+
+        return nil
     end 
 
     def gen_html

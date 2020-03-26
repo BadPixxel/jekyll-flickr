@@ -35,9 +35,9 @@ class FlickrLoader
     	puts "Flickr: Update of Photosets cache"
 
     	# Fetch list of Photosets
-        nsid = flickr.people.findByUsername(:username => site.config['flickr']['screen_name']).id
-        flickr_photosets = flickr.photosets.getList(:user_id => nsid)
-
+      nsid = flickr.people.findByUsername(:username => site.config['flickr']['screen_name']).id
+      flickr_photosets = flickr.photosets.getList(:user_id => nsid)
+        
     	# Update All Photosets Cache
         flickr_photosets.each do |flickr_photoset|
             photoset = Photoset.new(site, flickr_photoset)

@@ -142,7 +142,7 @@ class Photo
             'id' => self.id,
             'title' => self.title,
             'date' => self.date,
-            'decription' => self.description,
+            'description' => self.description,
             'tags' => self.tags,
             'tags_hash' => tags_hash,
             'url_full' =>  self.url_full,
