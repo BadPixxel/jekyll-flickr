@@ -11,6 +11,7 @@ env:
 # After a build, deploy to Ruby Gem
 deploy:
     provider:   rubygems
+    gem:        badpixxel-jekyll-flickr
     gemspec:    badpixxel-jekyll-flickr.gemspec
     api_key:
         secure: Bok1ntaSXwMZG+Lrd4MhzP3ksUnlgWrsNaaBUkuwuLYlGc4dfrkEKUDfrztRvtACgiK+/6WuKe6FWMJI/ifeWNi7MEXREgkqwjXFbXFXJWmlQ2reXNlxJGv4UqZGv1kmG2WnauS4hDKc9TqKA36HzJwXQpbP4KQNslvbfdPlI5ptwTshzAuSrznC6AWPvzirsBXwXag8Zu8MPlQd7MJWl3QNaOOOJgylsGOIgikaZAucnO5qPOlTANhSP6pqEhrbqozVxUWf43diFvMUcOMKwk0woyEb37TuPLg4y9IFQYqnzg/BiE24Hcb6tE/ibawclt8Kp6pReerBw+XN7lNfy7MnEA+b6B50mZM1GvQHs5MI63E361hVoi7BvJWHeBr/112Ozqv2Z9KFiGwVBOeYUabzQrzL3YkXoWzSD2DotOd1MGp8XDtOYmxrrM5a3WxuBhmxPPXYfC3yppckFwsgCFmaAkdBq3ES1+up4azRA/8rw4vZYSCtEsVV9t8xFsz8eMZCdQojqVf+J0egM9y9LR94QFpxasDATkMHJNuMO0X0nEAqqXA/NbYEP35RUmcZEkyQzUqJgDBBbaKeX2558qUndFXaT531Vs/qGfv0hvwLX6mYXCgeSOhJdkj2EDFFxnqJ7c2U3897RbnmPEEPgmEYHE+JeQSuhXSa0TL+K38=
